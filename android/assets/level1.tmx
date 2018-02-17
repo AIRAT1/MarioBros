@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" tiledversion="1.1.2" orientation="orthogonal" renderorder="right-down" width="240" height="13" tilewidth="16" tileheight="16" infinite="0" nextobjectid="14">
+ <tileset firstgid="1" name="tileset_gutter" tilewidth="16" tileheight="16" spacing="2" margin="1" tilecount="924" columns="33">
+  <image source="tileset_gutter.png" width="594" height="504"/>
+ </tileset>
+ <layer name="background" width="240" height="13">
+  <data encoding="base64" compression="zlib">
+   eJztwzEJAAAMA7Ay/4bqrir2JZBeUlVVVVVVVVVVVVVV1ccDxULniQ==
+  </data>
+ </layer>
+ <layer name="graphics" width="240" height="13">
+  <data encoding="base64" compression="zlib">
+   eJzt0zEOgDAIBVAYdXD3Cvb+97ODo91Mqcl7yQ9hAgYiAAAAAAAAAODd0XM+FQD4xpYRe457YF1X/9WW4x6YIwsyY3blfZX5+92r7r/qXjduOAH0
+  </data>
+ </layer>
+ <objectgroup name="ground">
+  <object id="1" x="0.181818" y="192" width="464" height="16"/>
+  <object id="2" x="496" y="192" width="367.818" height="15.6364"/>
+  <object id="3" x="896.182" y="192.182" width="959.818" height="15.4545"/>
+  <object id="4" x="1888.18" y="191.818" width="735.636" height="15.6364"/>
+  <object id="5" x="2656" y="191.818" width="575.818" height="15.8182"/>
+  <object id="6" x="3264.18" y="192" width="575.636" height="16"/>
+ </objectgroup>
+ <objectgroup name="pipes">
+  <object id="9" x="208" y="160.5" width="32" height="31.5"/>
+  <object id="10" x="272" y="160.5" width="32" height="31"/>
+ </objectgroup>
+ <objectgroup name="coins">
+  <object id="11" x="352.364" y="128" width="15.2727" height="15.6364"/>
+ </objectgroup>
+ <objectgroup name="bricks">
+  <object id="12" x="335.636" y="128.182" width="16.5455" height="15.4545"/>
+  <object id="13" x="368" y="128" width="15.8182" height="15.8182"/>
+ </objectgroup>
+</map>
