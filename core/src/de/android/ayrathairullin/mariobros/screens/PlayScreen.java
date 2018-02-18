@@ -6,6 +6,7 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
@@ -21,7 +22,10 @@ import de.android.ayrathairullin.mariobros.sprites.Mario;
 import de.android.ayrathairullin.mariobros.tools.B2WorldCreator;
 
 public class PlayScreen implements Screen {
+    // reference to our game, used to set screens
     private MarioBros game;
+    private TextureAtlas atlas;
+    // basic playscreen variables
     private OrthographicCamera gameCam;
     private Viewport gamePort;
     private Hud hud;
@@ -35,6 +39,7 @@ public class PlayScreen implements Screen {
     private Mario player;
 
     public PlayScreen(MarioBros game) {
+        atlas = new TextureAtlas("mario_and_enemies.pack");
         this.game = game;
         // create cam used to follow mario trough cam world
         gameCam = new OrthographicCamera();
@@ -51,7 +56,11 @@ public class PlayScreen implements Screen {
         world = new World(new Vector2(0, - 10), true);
         b2dr = new Box2DDebugRenderer();
         new B2WorldCreator(world, map);
-        player = new Mario(world);
+        player = new Mario(world, this);
+    }
+
+    public TextureAtlas getAtlas() {
+        return atlas;
     }
 
     @Override
@@ -60,10 +69,6 @@ public class PlayScreen implements Screen {
     }
 
     private void handleInput(float dt) {
-//        if (Gdx.input.isTouched()) {
-//            gameCam.position.x += 100 * dt;
-//            player.b2body.applyLinearImpulse(0, 4f, 0, 0, true);
-//        }
         if (Gdx.input.isKeyJustPressed(Input.Keys.UP))
             player.b2body.applyLinearImpulse(new Vector2(0, 4f), player.b2body.getWorldCenter(), true);
         if (Gdx.input.isKeyPressed(Input.Keys.RIGHT) && player.b2body.getLinearVelocity().x <= 2)
@@ -74,9 +79,14 @@ public class PlayScreen implements Screen {
 
     public void update(float dt) {
         handleInput(dt);
+        // takes 1 step in the physics simulation (60 times per second)
         world.step(1 / 60f, 6, 2);
+        player.update(dt);
+        // attach our gameCam to our player.x coordinate
         gameCam.position.x = player.b2body.getPosition().x;
+        // update our gameCam with correct coordinates after changes
         gameCam.update();
+        // tell our render draw only what our camera see
         renderer.setView(gameCam);
     }
 
@@ -91,6 +101,11 @@ public class PlayScreen implements Screen {
         renderer.render();
         // render our Box2DDebugLines
         b2dr.render(world, gameCam.combined);
+
+        game.batch.setProjectionMatrix(gameCam.combined);
+        game.batch.begin();
+        player.draw(game.batch);
+        game.batch.end();
         // set our batch to now draw what the hud camera sees
         game.batch.setProjectionMatrix(hud.stage.getCamera().combined);
         hud.stage.draw();
