@@ -8,5 +8,11 @@ import com.badlogic.gdx.physics.box2d.World;
 public class Ground extends InteractiveTileObject {
     public Ground(World world, TiledMap map, Rectangle bounds) {
         super(world, map, bounds);
+        fixture.setUserData(this);
+    }
+
+    @Override
+    public void onHeadHit() {
+        // unused
     }
 }

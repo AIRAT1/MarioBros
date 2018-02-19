@@ -20,6 +20,7 @@ import de.android.ayrathairullin.mariobros.MarioBros;
 import de.android.ayrathairullin.mariobros.scenes.Hud;
 import de.android.ayrathairullin.mariobros.sprites.Mario;
 import de.android.ayrathairullin.mariobros.tools.B2WorldCreator;
+import de.android.ayrathairullin.mariobros.tools.WorldContactListener;
 
 public class PlayScreen implements Screen {
     // reference to our game, used to set screens
@@ -57,6 +58,7 @@ public class PlayScreen implements Screen {
         b2dr = new Box2DDebugRenderer();
         new B2WorldCreator(world, map);
         player = new Mario(world, this);
+        world.setContactListener(new WorldContactListener());
     }
 
     public TextureAtlas getAtlas() {
