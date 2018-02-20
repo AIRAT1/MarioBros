@@ -84,6 +84,7 @@ public class PlayScreen implements Screen {
         // takes 1 step in the physics simulation (60 times per second)
         world.step(1 / 60f, 6, 2);
         player.update(dt);
+        hud.update(dt);
         // attach our gameCam to our player.x coordinate
         gameCam.position.x = player.b2body.getPosition().x;
         // update our gameCam with correct coordinates after changes

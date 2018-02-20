@@ -10,7 +10,7 @@
  </layer>
  <layer name="graphics" width="240" height="13">
   <data encoding="base64" compression="zlib">
-   eJztmMFOwzAMhrPeQKjS4NRXAIkDDJB4T+BNgDcBToy3AE4YsUlRlNZ27DpJySdZWtXa8e/aTTTnGo1GA+elc+4V7K3j+96Bzz3YQ4KvRbwY7xB7C/Yx4xq1YVF3Kjnez9z6JTOG8Qkxv8C+E2I/gs8T2LNSXtrxLJH0QO5vSs11H4NT07n1S2asYcMSZ6Bhz5x7NcYgvE8h916Vi5y6Szpf52BY2a3V9mp9usBKReP7GOO/ny1uDefXCr9Xwv4OXzN2X7p+Trh6BldO7g0apc8vpZ/8Zw5Az6GipnAGYteDs9n7pNooWrR01HAmWAL+/B5FzILe/c1Av7vm7IdhT5/C77PCv0lUlqytoYM/v33ESgPr6ZJ6/JiZR03aQjhng2Hkd0osznqUuNizU/ep/5Fy9U31kcX8hvlK3g/W06X0+BpyuAQ7IeSyP2PUom2Pfz6S5qYZKzUu9qwkx1RfrI8k83sFvtdgN0guWB9S41BixWrDic/xGXvmt+YXu7pvJmof+kvnN0WnFpozpxnLrwknLtajkhypPUrpo9j8nrvx+V1lMIu1c+rLabXrLjX/UvP6AYNfUzk=
+   eJztmMFOwzAMhrPeQKjS4JRXAIkDDJB4T+BNgDcBToy3AE4YsUlVlNZ27DpJySdZWtXa8e/aTTTnGo1GA+elc+4V7K3j+96Bzz3YQ4KvRbwY7xB7C/Yx4xq1YVF3Kjnez9z6JTOG8Qkxv8C+E2I/gs8T2LNSXtrxLJH0QO5vSs11H4NT07n1S2asYcMSZ6Bhz5x7NYYX3qeQe6/KRU7dJZ2vc+BXdmu1vVqfLrBS0fg+xvjvZ4tbw/nNQdjf4WvG7qcwV69y4erxrpzcGzSWNr8HoOdQUVM4A7Fr72z2Pqk2ihYtHTWcCZbAcH6PImZB7/5moN9dc/bDsKdP4ffZQr5JS9bW0GE4v33ESgPr6ZJ6/JiZR03aQjhnAz/yOyUWZz1KXOzZqfvU/0i5+qb6yGJ+w3wl7wfr6VJ6fA05XIKdEHLZnzFq0bZneD6S5qYZKzUu9qwkx1RfrI8k83sFvtdgN0guWB9S41BixWrDic/xGXvmt+YXu7pvJmof+kvnN0WnFpozpxlrWBNOXKxHJTlSe5TSR7H5PXfj87vKYBZr59SX02rXXWr+peb1A7ceUu4=
   </data>
  </layer>
  <objectgroup name="ground">
@@ -60,9 +60,6 @@
   <object id="94" x="1105" y="112.75" width="14.25" height="14.5"/>
   <object id="95" x="864.5" y="64" width="15" height="15.5"/>
   <object id="96" x="736" y="64.25" width="15.25" height="15.5"/>
-  <object id="97" x="656.25" y="96" width="15.25" height="15.5"/>
-  <object id="98" x="592.25" y="111.75" width="15.25" height="15.75"/>
-  <object id="99" x="448.25" y="112.25" width="15" height="15.75"/>
  </objectgroup>
  <objectgroup name="bricks">
   <object id="12" x="335.636" y="128.182" width="16.5455" height="15.4545"/>
