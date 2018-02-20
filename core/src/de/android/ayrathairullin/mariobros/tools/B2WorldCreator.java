@@ -11,13 +11,15 @@ import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.World;
 
+import de.android.ayrathairullin.mariobros.MarioBros;
+import de.android.ayrathairullin.mariobros.screens.PlayScreen;
 import de.android.ayrathairullin.mariobros.sprites.Brick;
 import de.android.ayrathairullin.mariobros.sprites.Coin;
-import de.android.ayrathairullin.mariobros.sprites.Ground;
-import de.android.ayrathairullin.mariobros.sprites.Pipe;
 
 public class B2WorldCreator {
-    public B2WorldCreator(World world, TiledMap map) {
+    public B2WorldCreator(PlayScreen screen) {
+        World world = screen.getWorld();
+        TiledMap map = screen.getMap();
         // create body and fixture variables
         BodyDef bdef = new BodyDef();
         PolygonShape shape = new PolygonShape();
@@ -25,23 +27,34 @@ public class B2WorldCreator {
         Body body;
         // create ground bodies/fixtures
         for (MapObject object : map.getLayers().get(2).getObjects().getByType(RectangleMapObject.class)) {
-            Rectangle rect = ((RectangleMapObject)object).getRectangle();
-            new Ground(world, map, rect);
+            Rectangle rect = ((RectangleMapObject) object).getRectangle();
+            bdef.type = BodyDef.BodyType.StaticBody;
+            bdef.position.set((rect.getX() + rect.getWidth() / 2) / MarioBros.PPM, (rect.getY() + rect.getHeight() / 2) / MarioBros.PPM);
+            body = world.createBody(bdef);
+            shape.setAsBox(rect.getWidth() / 2 / MarioBros.PPM, rect.getHeight() / 2 / MarioBros.PPM);
+            fdef.shape = shape;
+            body.createFixture(fdef);
         }
         // create pipe bodies/fixtures
         for (MapObject object : map.getLayers().get(3).getObjects().getByType(RectangleMapObject.class)) {
-            Rectangle rect = ((RectangleMapObject)object).getRectangle();
-            new Pipe(world, map, rect);
+            Rectangle rect = ((RectangleMapObject) object).getRectangle();
+            bdef.type = BodyDef.BodyType.StaticBody;
+            bdef.position.set((rect.getX() + rect.getWidth() / 2) / MarioBros.PPM, (rect.getY() + rect.getHeight() / 2) / MarioBros.PPM);
+            body = world.createBody(bdef);
+            shape.setAsBox(rect.getWidth() / 2 / MarioBros.PPM, rect.getHeight() / 2 / MarioBros.PPM);
+            fdef.shape = shape;
+            fdef.filter.categoryBits = MarioBros.OBJECT_BIT;
+            body.createFixture(fdef);
         }
         // create coin bodies/fixtures
         for (MapObject object : map.getLayers().get(4).getObjects().getByType(RectangleMapObject.class)) {
             Rectangle rect = ((RectangleMapObject)object).getRectangle();
-            new Coin(world, map, rect);
+            new Coin(screen, rect);
         }
         // create brick bodies/fixtures
         for (MapObject object : map.getLayers().get(5).getObjects().getByType(RectangleMapObject.class)) {
             Rectangle rect = ((RectangleMapObject)object).getRectangle();
-            new Brick(world, map, rect);
+            new Brick(screen, rect);
         }
     }
 }

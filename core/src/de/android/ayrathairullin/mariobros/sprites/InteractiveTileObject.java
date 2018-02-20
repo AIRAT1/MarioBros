@@ -14,6 +14,7 @@ import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.World;
 
 import de.android.ayrathairullin.mariobros.MarioBros;
+import de.android.ayrathairullin.mariobros.screens.PlayScreen;
 
 public abstract class InteractiveTileObject {
     protected World world;
@@ -23,9 +24,9 @@ public abstract class InteractiveTileObject {
     protected Body body;
     protected Fixture fixture;
 
-    public InteractiveTileObject(World world, TiledMap map, Rectangle bounds) {
-        this.world = world;
-        this.map = map;
+    public InteractiveTileObject(PlayScreen screen, Rectangle bounds) {
+        this.world = screen.getWorld();
+        this.map = screen.getMap();
         this.bounds = bounds;
         BodyDef bdef = new BodyDef();
         FixtureDef fdef = new FixtureDef();
