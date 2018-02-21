@@ -1,4 +1,4 @@
-package de.android.ayrathairullin.mariobros.sprites;
+package de.android.ayrathairullin.mariobros.sprites.tileObjects;
 
 
 import com.badlogic.gdx.maps.tiled.TiledMap;

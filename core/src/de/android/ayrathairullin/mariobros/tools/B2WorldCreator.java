@@ -14,9 +14,9 @@ import com.badlogic.gdx.utils.Array;
 
 import de.android.ayrathairullin.mariobros.MarioBros;
 import de.android.ayrathairullin.mariobros.screens.PlayScreen;
-import de.android.ayrathairullin.mariobros.sprites.Brick;
-import de.android.ayrathairullin.mariobros.sprites.Coin;
-import de.android.ayrathairullin.mariobros.sprites.Goomba;
+import de.android.ayrathairullin.mariobros.sprites.items.Brick;
+import de.android.ayrathairullin.mariobros.sprites.items.Coin;
+import de.android.ayrathairullin.mariobros.sprites.enemies.Goomba;
 
 public class B2WorldCreator {
     private Array<Goomba> goombas;

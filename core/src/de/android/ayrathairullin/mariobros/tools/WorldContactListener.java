@@ -9,8 +9,8 @@ import com.badlogic.gdx.physics.box2d.Fixture;
 import com.badlogic.gdx.physics.box2d.Manifold;
 
 import de.android.ayrathairullin.mariobros.MarioBros;
-import de.android.ayrathairullin.mariobros.sprites.Enemy;
-import de.android.ayrathairullin.mariobros.sprites.InteractiveTileObject;
+import de.android.ayrathairullin.mariobros.sprites.enemies.Enemy;
+import de.android.ayrathairullin.mariobros.sprites.tileObjects.InteractiveTileObject;
 
 public class WorldContactListener implements ContactListener{
     @Override

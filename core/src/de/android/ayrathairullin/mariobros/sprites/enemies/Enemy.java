@@ -1,4 +1,4 @@
-package de.android.ayrathairullin.mariobros.sprites;
+package de.android.ayrathairullin.mariobros.sprites.enemies;
 
 
 import com.badlogic.gdx.graphics.g2d.Sprite;
@@ -20,6 +20,7 @@ public abstract class Enemy extends Sprite{
         setPosition(x, y);
         defineEnemy();
         velocity = new Vector2(1, 0);
+        b2body.setActive(false);
     }
 
     protected abstract void defineEnemy();

@@ -1,4 +1,4 @@
-package de.android.ayrathairullin.mariobros.sprites;
+package de.android.ayrathairullin.mariobros.sprites.enemies;
 
 
 import com.badlogic.gdx.graphics.g2d.Animation;

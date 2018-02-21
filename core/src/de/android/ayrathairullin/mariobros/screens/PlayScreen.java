@@ -19,7 +19,7 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 
 import de.android.ayrathairullin.mariobros.MarioBros;
 import de.android.ayrathairullin.mariobros.scenes.Hud;
-import de.android.ayrathairullin.mariobros.sprites.Enemy;
+import de.android.ayrathairullin.mariobros.sprites.enemies.Enemy;
 import de.android.ayrathairullin.mariobros.sprites.Mario;
 import de.android.ayrathairullin.mariobros.tools.B2WorldCreator;
 import de.android.ayrathairullin.mariobros.tools.WorldContactListener;
@@ -94,6 +94,9 @@ public class PlayScreen implements Screen {
         player.update(dt);
         for (Enemy enemy : creator.getGoombas()) {
             enemy.update(dt);
+            if (enemy.getX() < player.getX() + 224 / MarioBros.PPM) {
+                enemy.b2body.setActive(true);
+            }
         }
         hud.update(dt);
         // attach our gameCam to our player.x coordinate
