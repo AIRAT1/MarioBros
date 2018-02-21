@@ -14,13 +14,19 @@ import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.World;
+import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
+
+import java.util.PriorityQueue;
 
 import de.android.ayrathairullin.mariobros.MarioBros;
 import de.android.ayrathairullin.mariobros.scenes.Hud;
 import de.android.ayrathairullin.mariobros.sprites.enemies.Enemy;
 import de.android.ayrathairullin.mariobros.sprites.Mario;
+import de.android.ayrathairullin.mariobros.sprites.items.Item;
+import de.android.ayrathairullin.mariobros.sprites.items.ItemDef;
+import de.android.ayrathairullin.mariobros.sprites.items.Mushroom;
 import de.android.ayrathairullin.mariobros.tools.B2WorldCreator;
 import de.android.ayrathairullin.mariobros.tools.WorldContactListener;
 
@@ -43,6 +49,8 @@ public class PlayScreen implements Screen {
     // sprites
     private Mario player;
     private Music music;
+    private Array<Item> items;
+    private PriorityQueue<ItemDef> itemsToSpawn;
 
     public PlayScreen(MarioBros game) {
         atlas = new TextureAtlas("mario_and_enemies.pack");
@@ -67,6 +75,21 @@ public class PlayScreen implements Screen {
         music = MarioBros.manager.get("audio/music/mario_music.ogg", Music.class);
         music.setLooping(true);
         music.play();
+        items = new Array<Item>();
+        itemsToSpawn = new PriorityQueue<ItemDef>();
+    }
+
+    public void spawnItem(ItemDef iDef) {
+        itemsToSpawn.add(iDef);
+    }
+
+    public void handleSpawningItems() {
+        if (!itemsToSpawn.isEmpty()) {
+            ItemDef iDef = itemsToSpawn.poll();
+            if (iDef.type == Mushroom.class) {
+                items.add(new Mushroom(this, iDef.position.x, iDef.position.y));
+            }
+        }
     }
 
     public TextureAtlas getAtlas() {
@@ -89,6 +112,7 @@ public class PlayScreen implements Screen {
 
     public void update(float dt) {
         handleInput(dt);
+        handleSpawningItems();
         // takes 1 step in the physics simulation (60 times per second)
         world.step(1 / 60f, 6, 2);
         player.update(dt);
@@ -97,6 +121,9 @@ public class PlayScreen implements Screen {
             if (enemy.getX() < player.getX() + 224 / MarioBros.PPM) {
                 enemy.b2body.setActive(true);
             }
+        }
+        for (Item item : items) {
+            item.update(dt);
         }
         hud.update(dt);
         // attach our gameCam to our player.x coordinate
@@ -123,6 +150,9 @@ public class PlayScreen implements Screen {
         player.draw(game.batch);
         for (Enemy enemy : creator.getGoombas()) {
             enemy.draw(game.batch);
+        }
+        for (Item item : items) {
+            item.draw(game.batch);
         }
         game.batch.end();
         // set our batch to now draw what the hud camera sees
