@@ -19,7 +19,7 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 
 import de.android.ayrathairullin.mariobros.MarioBros;
 import de.android.ayrathairullin.mariobros.scenes.Hud;
-import de.android.ayrathairullin.mariobros.sprites.Goomba;
+import de.android.ayrathairullin.mariobros.sprites.Enemy;
 import de.android.ayrathairullin.mariobros.sprites.Mario;
 import de.android.ayrathairullin.mariobros.tools.B2WorldCreator;
 import de.android.ayrathairullin.mariobros.tools.WorldContactListener;
@@ -39,9 +39,10 @@ public class PlayScreen implements Screen {
     // Box2d variables
     private World world;
     private Box2DDebugRenderer b2dr;
+    private B2WorldCreator creator;
+    // sprites
     private Mario player;
     private Music music;
-    private Goomba goomba;
 
     public PlayScreen(MarioBros game) {
         atlas = new TextureAtlas("mario_and_enemies.pack");
@@ -60,14 +61,12 @@ public class PlayScreen implements Screen {
         gameCam.position.set(gamePort.getWorldWidth() / 2, gamePort.getWorldHeight() / 2, 0);
         world = new World(new Vector2(0, - 10), true);
         b2dr = new Box2DDebugRenderer();
-        new B2WorldCreator(this);
+        creator = new B2WorldCreator(this);
         player = new Mario(this);
         world.setContactListener(new WorldContactListener());
         music = MarioBros.manager.get("audio/music/mario_music.ogg", Music.class);
         music.setLooping(true);
         music.play();
-//        goomba = new Goomba(this, 32 / MarioBros.PPM, 32 / MarioBros.PPM);
-        goomba = new Goomba(this, 1f, 32 / MarioBros.PPM);
     }
 
     public TextureAtlas getAtlas() {
@@ -93,7 +92,9 @@ public class PlayScreen implements Screen {
         // takes 1 step in the physics simulation (60 times per second)
         world.step(1 / 60f, 6, 2);
         player.update(dt);
-        goomba.update(dt);
+        for (Enemy enemy : creator.getGoombas()) {
+            enemy.update(dt);
+        }
         hud.update(dt);
         // attach our gameCam to our player.x coordinate
         gameCam.position.x = player.b2body.getPosition().x;
@@ -114,11 +115,12 @@ public class PlayScreen implements Screen {
         renderer.render();
         // render our Box2DDebugLines
         b2dr.render(world, gameCam.combined);
-
         game.batch.setProjectionMatrix(gameCam.combined);
         game.batch.begin();
         player.draw(game.batch);
-        goomba.draw(game.batch);
+        for (Enemy enemy : creator.getGoombas()) {
+            enemy.draw(game.batch);
+        }
         game.batch.end();
         // set our batch to now draw what the hud camera sees
         game.batch.setProjectionMatrix(hud.stage.getCamera().combined);
