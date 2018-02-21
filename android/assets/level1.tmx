@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.1.2" orientation="orthogonal" renderorder="right-down" width="240" height="13" tilewidth="16" tileheight="16" infinite="0" nextobjectid="106">
+<map version="1.0" tiledversion="1.1.2" orientation="orthogonal" renderorder="right-down" width="240" height="13" tilewidth="16" tileheight="16" infinite="0" nextobjectid="109">
  <tileset firstgid="1" name="tileset_gutter" tilewidth="16" tileheight="16" spacing="2" margin="1" tilecount="924" columns="33">
   <image source="tileset_gutter.png" width="594" height="504"/>
  </tileset>
@@ -10,7 +10,7 @@
  </layer>
  <layer name="graphics" width="240" height="13">
   <data encoding="base64" compression="zlib">
-   eJztmMFOwzAMhrPeQKjS4JRXAIkDDJB4T+BNgDcBToy3AE4YsUlVlNZ27DpJySdZWtXa8e/aTTTnGo1GA+elc+4V7K3j+96Bzz3YQ4KvRbwY7xB7C/Yx4xq1YVF3Kjnez9z6JTOG8Qkxv8C+E2I/gs8T2LNSXtrxLJH0QO5vSs11H4NT07n1S2asYcMSZ6Bhz5x7NYYX3qeQe6/KRU7dJZ2vc+BXdmu1vVqfLrBS0fg+xvjvZ4tbw/nNQdjf4WvG7qcwV69y4erxrpzcGzSWNr8HoOdQUVM4A7Fr72z2Pqk2ihYtHTWcCZbAcH6PImZB7/5moN9dc/bDsKdP4ffZQr5JS9bW0GE4v33ESgPr6ZJ6/JiZR03aQjhnAz/yOyUWZz1KXOzZqfvU/0i5+qb6yGJ+w3wl7wfr6VJ6fA05XIKdEHLZnzFq0bZneD6S5qYZKzUu9qwkx1RfrI8k83sFvtdgN0guWB9S41BixWrDic/xGXvmt+YXu7pvJmof+kvnN0WnFpozpxlrWBNOXKxHJTlSe5TSR7H5PXfj87vKYBZr59SX02rXXWr+peb1A7ceUu4=
+   eJztmEtOxDAMhjPdgVAlYJUrgMSCp8Q9gZsANwFWDLcAVhgxlaoore3EcR7kkyxN1drx79pNNMZ0Op0OzstgzCvY28D3vQOfe7CHAF+NeD7eIfYW7CPhGrWhUXcqOd5Pav0xM4bxCTG/wL4DYj+CzxPYs1Be0vE0iemB3N+Umuu+BKemqfXHzFhHhxZnoKNPyr0aw0bep5B7r8pFTt0lna9zYDd6a/W9Wp7BsVKR+D76+O9ni1vF+c2B29/ua8buh5CqV7lw9VhTTu4dGq3N7x7o2RfU5M6A79oanb0vVhtFi5SOGs4ELTCf3wOPaTCavxkYd9ec/dDt6RP4fdrIN6llbR0Z5vM7eqw0sJ4uqcePmHnUpM2FczawC79DYnHWo8TFnl27T/2PlKtvrY805tfNN+b9YD1dSo8fQg4XYMeEXKYzRi3aJubno9jcJGOFxsWejckx1Bfro5D5nda/ArsGu0FywfqQGocSy1cbTnyOz9IzvzU/39X9cqX2rn/s/IbolEJy5iRjzWvCiYv1aEyO1B6l9JFvfs/M8vxuMpjG2jn15bTadZeaf6l5/QBBvVNF
   </data>
  </layer>
  <objectgroup name="ground">
@@ -36,6 +36,7 @@
   <object id="23" x="2976.67" y="144" width="31.3333" height="47.3333"/>
   <object id="24" x="3104.67" y="144.667" width="31.6667" height="47.3333"/>
   <object id="25" x="3344.33" y="144" width="32" height="47.6667"/>
+  <object id="108" x="16" y="176.333" width="32" height="15.6667"/>
  </objectgroup>
  <objectgroup name="coins">
   <object id="11" x="352.364" y="128" width="15.2727" height="15.6364"/>
