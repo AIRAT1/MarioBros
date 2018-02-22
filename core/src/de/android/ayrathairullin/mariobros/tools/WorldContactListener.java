@@ -9,7 +9,9 @@ import com.badlogic.gdx.physics.box2d.Fixture;
 import com.badlogic.gdx.physics.box2d.Manifold;
 
 import de.android.ayrathairullin.mariobros.MarioBros;
+import de.android.ayrathairullin.mariobros.sprites.Mario;
 import de.android.ayrathairullin.mariobros.sprites.enemies.Enemy;
+import de.android.ayrathairullin.mariobros.sprites.items.Item;
 import de.android.ayrathairullin.mariobros.sprites.tileObjects.InteractiveTileObject;
 
 public class WorldContactListener implements ContactListener{
@@ -46,6 +48,20 @@ public class WorldContactListener implements ContactListener{
             case MarioBros.ENEMY_BIT | MarioBros.ENEMY_BIT:
                 ((Enemy)fixA.getUserData()).reverseVelocity(true, false);
                 ((Enemy)fixB.getUserData()).reverseVelocity(true, false);
+                break;
+            case MarioBros.ITEM_BIT | MarioBros.OBJECT_BIT:
+                if (fixA.getFilterData().categoryBits == MarioBros.ITEM_BIT) {
+                    ((Item)fixA.getUserData()).reverseVelocity(true, false);
+                }else {
+                    ((Item)fixB.getUserData()).reverseVelocity(true, false);
+                }
+                break;
+            case MarioBros.ITEM_BIT | MarioBros.MARIO_BIT:
+                if (fixA.getFilterData().categoryBits == MarioBros.ITEM_BIT) {
+                    ((Item)fixA.getUserData()).use((Mario)fixB.getUserData());
+                }else if (fixB.getFilterData().categoryBits == MarioBros.ITEM_BIT){
+                    ((Item)fixB.getUserData()).use((Mario)fixA.getUserData());
+                }
                 break;
         }
     }
