@@ -44,13 +44,21 @@
   <object id="125" x="3615.33" y="143.333" width="15.3333" height="14.6667"/>
  </objectgroup>
  <objectgroup name="coins">
-  <object id="11" x="352.364" y="128" width="15.2727" height="15.6364"/>
+  <object id="11" x="352.364" y="128" width="15.2727" height="15.6364">
+   <properties>
+    <property name="mushroom" value=""/>
+   </properties>
+  </object>
   <object id="26" x="736.25" y="64" width="15.25" height="16"/>
   <object id="27" x="864.25" y="64.5" width="15.5" height="15"/>
   <object id="28" x="2272.25" y="80" width="15.5" height="16"/>
   <object id="29" x="2320.5" y="144.5" width="15.75" height="14.25"/>
   <object id="30" x="2368.25" y="144.5" width="15.75" height="15.5"/>
-  <object id="31" x="3184.25" y="144.25" width="15.75" height="15.5"/>
+  <object id="31" x="3184.25" y="144.25" width="15.75" height="15.5">
+   <properties>
+    <property name="mushroom" value=""/>
+   </properties>
+  </object>
   <object id="80" x="3318.25" y="151.5" height="0.25"/>
   <object id="83" x="3312.25" y="144" width="15.25" height="15.5"/>
   <object id="84" x="3184" y="144" width="15.75" height="15.5"/>
@@ -59,10 +67,18 @@
   <object id="87" x="2768.25" y="144.25" width="15.75" height="15.25"/>
   <object id="88" x="2369" y="145" width="14.5" height="14.75"/>
   <object id="89" x="2320.5" y="144.5" width="15.5" height="15"/>
-  <object id="90" x="2272.25" y="80.25" width="15.75" height="16"/>
+  <object id="90" x="2272.25" y="80.25" width="15.75" height="16">
+   <properties>
+    <property name="mushroom" value=""/>
+   </properties>
+  </object>
   <object id="91" x="1904.25" y="96" width="14.75" height="15.5"/>
   <object id="92" x="1920" y="95.75" width="15.25" height="16"/>
-  <object id="93" x="1168.75" y="96" width="14.5" height="15.5"/>
+  <object id="93" x="1168.75" y="96" width="14.5" height="15.5">
+   <properties>
+    <property name="mushroom" value=""/>
+   </properties>
+  </object>
   <object id="94" x="1105" y="112.75" width="14.25" height="14.5"/>
   <object id="95" x="864.5" y="64" width="15" height="15.5"/>
   <object id="96" x="736" y="64.25" width="15.25" height="15.5"/>

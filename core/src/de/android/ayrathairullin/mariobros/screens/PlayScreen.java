@@ -18,12 +18,12 @@ import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
-import java.util.PriorityQueue;
+import java.util.concurrent.LinkedBlockingDeque;
 
 import de.android.ayrathairullin.mariobros.MarioBros;
 import de.android.ayrathairullin.mariobros.scenes.Hud;
-import de.android.ayrathairullin.mariobros.sprites.enemies.Enemy;
 import de.android.ayrathairullin.mariobros.sprites.Mario;
+import de.android.ayrathairullin.mariobros.sprites.enemies.Enemy;
 import de.android.ayrathairullin.mariobros.sprites.items.Item;
 import de.android.ayrathairullin.mariobros.sprites.items.ItemDef;
 import de.android.ayrathairullin.mariobros.sprites.items.Mushroom;
@@ -50,7 +50,7 @@ public class PlayScreen implements Screen {
     private Mario player;
     private Music music;
     private Array<Item> items;
-    private PriorityQueue<ItemDef> itemsToSpawn;
+    private LinkedBlockingDeque<ItemDef> itemsToSpawn;
 
     public PlayScreen(MarioBros game) {
         atlas = new TextureAtlas("mario_and_enemies.pack");
@@ -76,7 +76,7 @@ public class PlayScreen implements Screen {
         music.setLooping(true);
 //        music.play();
         items = new Array<Item>();
-        itemsToSpawn = new PriorityQueue<ItemDef>();
+        itemsToSpawn = new LinkedBlockingDeque<ItemDef>();
     }
 
     public void spawnItem(ItemDef iDef) {
