@@ -9,6 +9,7 @@ import com.badlogic.gdx.math.Vector2;
 import de.android.ayrathairullin.mariobros.MarioBros;
 import de.android.ayrathairullin.mariobros.scenes.Hud;
 import de.android.ayrathairullin.mariobros.screens.PlayScreen;
+import de.android.ayrathairullin.mariobros.sprites.Mario;
 import de.android.ayrathairullin.mariobros.sprites.tileObjects.InteractiveTileObject;
 
 public class Coin extends InteractiveTileObject {
@@ -23,7 +24,7 @@ public class Coin extends InteractiveTileObject {
     }
 
     @Override
-    public void onHeadHit() {
+    public void onHeadHit(Mario mario) {
         if (getCell().getTile().getId() == BLANK_COIN) {
             MarioBros.manager.get("audio/sounds/bump.wav", Sound.class).play();
         }else {
