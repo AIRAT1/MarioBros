@@ -102,12 +102,15 @@ public class PlayScreen implements Screen {
     }
 
     private void handleInput(float dt) {
-        if (Gdx.input.isKeyJustPressed(Input.Keys.UP))
-            player.b2body.applyLinearImpulse(new Vector2(0, 4f), player.b2body.getWorldCenter(), true);
-        if (Gdx.input.isKeyPressed(Input.Keys.RIGHT) && player.b2body.getLinearVelocity().x <= 2)
-            player.b2body.applyLinearImpulse(new Vector2(.1f, 0), player.b2body.getWorldCenter(), true);
-        if (Gdx.input.isKeyPressed(Input.Keys.LEFT) && player.b2body.getLinearVelocity().x >= - 2)
-            player.b2body.applyLinearImpulse(new Vector2(- .1f, 0), player.b2body.getWorldCenter(), true);
+        // control our player using immediate impulses
+        if (player.currentState != Mario.State.DEAD) {
+            if (Gdx.input.isKeyJustPressed(Input.Keys.UP))
+                player.b2body.applyLinearImpulse(new Vector2(0, 4f), player.b2body.getWorldCenter(), true);
+            if (Gdx.input.isKeyPressed(Input.Keys.RIGHT) && player.b2body.getLinearVelocity().x <= 2)
+                player.b2body.applyLinearImpulse(new Vector2(.1f, 0), player.b2body.getWorldCenter(), true);
+            if (Gdx.input.isKeyPressed(Input.Keys.LEFT) && player.b2body.getLinearVelocity().x >= - 2)
+                player.b2body.applyLinearImpulse(new Vector2(- .1f, 0), player.b2body.getWorldCenter(), true);
+        }
     }
 
     public void update(float dt) {
@@ -127,7 +130,9 @@ public class PlayScreen implements Screen {
         }
         hud.update(dt);
         // attach our gameCam to our player.x coordinate
-        gameCam.position.x = player.b2body.getPosition().x;
+        if (player.currentState != Mario.State.DEAD) {
+            gameCam.position.x = player.b2body.getPosition().x;
+        }
         // update our gameCam with correct coordinates after changes
         gameCam.update();
         // tell our render draw only what our camera see
