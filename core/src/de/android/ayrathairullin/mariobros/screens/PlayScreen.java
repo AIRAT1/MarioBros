@@ -163,6 +163,17 @@ public class PlayScreen implements Screen {
         // set our batch to now draw what the hud camera sees
         game.batch.setProjectionMatrix(hud.stage.getCamera().combined);
         hud.stage.draw();
+        if (gameOver()) {
+            game.setScreen(new GameOverScreen(game));
+            dispose();
+        }
+    }
+
+    public boolean gameOver() {
+        if (player.currentState == Mario.State.DEAD && player.getStateTimer() > 3) {
+            return true;
+        }
+        return false;
     }
 
     @Override
@@ -196,12 +207,10 @@ public class PlayScreen implements Screen {
 
     @Override
     public void dispose() {
-        game.batch.dispose();
         map.dispose();
         renderer.dispose();
         world.dispose();
         b2dr.dispose();
         hud.dispose();
-        music.dispose();
     }
 }
