@@ -14,6 +14,7 @@ import com.badlogic.gdx.utils.Array;
 
 import de.android.ayrathairullin.mariobros.MarioBros;
 import de.android.ayrathairullin.mariobros.screens.PlayScreen;
+import de.android.ayrathairullin.mariobros.sprites.Mario;
 
 public class Goomba extends Enemy {
     private float stateTime;
@@ -88,7 +89,7 @@ public class Goomba extends Enemy {
     }
 
     @Override
-    public void hitOnHead() {
+    public void hitOnHead(Mario mario) {
         setToDestroy = true;
         MarioBros.manager.get("audio/sounds/stomp.wav", Sound.class).play();
     }
