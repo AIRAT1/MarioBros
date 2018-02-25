@@ -102,6 +102,12 @@ public class Mario extends Sprite {
         if (timeToRedefineMario) {
             redefineMario();
         }
+        if (b2body.getPosition().y < 0) {
+            currentState = State.DEAD;
+        }
+        if (b2body.getPosition().x < 0) {
+            setPosition(0, b2body.getPosition().y - getHeight() / 2);
+        }
     }
 
     public TextureRegion getFrame(float dt) {
@@ -200,16 +206,20 @@ public class Mario extends Sprite {
                 setBounds(getX(), getY(), getWidth(), getHeight() / 2);
                 MarioBros.manager.get("audio/sounds/powerdown.wav", Sound.class).play();
             } else {
-                MarioBros.manager.get("audio/music/mario_music.ogg", Music.class).stop();
-                MarioBros.manager.get("audio/sounds/mariodie.wav", Sound.class).play();
-                marioIsDead = true;
-                Filter filter = new Filter();
-                filter.maskBits = MarioBros.NOTHING_BIT;
-                for (Fixture fixture : b2body.getFixtureList()) {
-                    fixture.setFilterData(filter);
-                }
+                dieMario();
                 b2body.applyLinearImpulse(new Vector2(0, 4f), b2body.getWorldCenter(), true);
             }
+        }
+    }
+
+    private void dieMario() {
+        MarioBros.manager.get("audio/music/mario_music.ogg", Music.class).stop();
+        MarioBros.manager.get("audio/sounds/mariodie.wav", Sound.class).play();
+        marioIsDead = true;
+        Filter filter = new Filter();
+        filter.maskBits = MarioBros.NOTHING_BIT;
+        for (Fixture fixture : b2body.getFixtureList()) {
+            fixture.setFilterData(filter);
         }
     }
 

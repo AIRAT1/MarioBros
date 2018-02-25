@@ -61,7 +61,7 @@ public class PlayScreen implements Screen {
         // create a FitViewport to maintain virtual aspect ratio despite screen size
         gamePort = new FitViewport(MarioBros.V_WIDTH / MarioBros.PPM, MarioBros.V_HEIGHT / MarioBros.PPM, gameCam);
         // create our game HUD for scores/timers/levels info
-        hud = new Hud(game.batch);
+        hud = new Hud(game.batch, level);
         // load our map and setup our map renderer
         mapLoader = new TmxMapLoader();
         map = mapLoader.load("tiled/level" + level + ".tmx");
