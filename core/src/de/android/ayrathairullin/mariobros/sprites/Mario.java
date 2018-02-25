@@ -132,12 +132,17 @@ public class Mario extends Sprite {
         if ((b2body.getLinearVelocity().x < 0 || !runningRight) && !region.isFlipX()) {
             region.flip(true, false);
             runningRight = false;
+        // if mario is running right and the texture isnt facing right... flip it.
         } else if ((b2body.getLinearVelocity().x > 0 || runningRight) && region.isFlipX()) {
             region.flip(true, false);
             runningRight = true;
         }
+        // if the current state is the same as the previous state increase the state timer.
+        // otherwise the state has changed and we ned to reset timer.
         stateTimer = currentState == previousState ? stateTimer + dt : 0;
+        // update previous state
         previousState = currentState;
+        // return uor final adjusted frame
         return region;
     }
 

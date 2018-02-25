@@ -14,12 +14,15 @@ import com.badlogic.gdx.utils.Array;
 
 import de.android.ayrathairullin.mariobros.MarioBros;
 import de.android.ayrathairullin.mariobros.screens.PlayScreen;
+import de.android.ayrathairullin.mariobros.sprites.enemies.Enemy;
+import de.android.ayrathairullin.mariobros.sprites.enemies.Turtle;
 import de.android.ayrathairullin.mariobros.sprites.items.Brick;
 import de.android.ayrathairullin.mariobros.sprites.items.Coin;
 import de.android.ayrathairullin.mariobros.sprites.enemies.Goomba;
 
 public class B2WorldCreator {
     private Array<Goomba> goombas;
+    private Array<Turtle> turtles;
 
     public B2WorldCreator(PlayScreen screen) {
         World world = screen.getWorld();
@@ -64,9 +67,22 @@ public class B2WorldCreator {
             Rectangle rect = ((RectangleMapObject)object).getRectangle();
             goombas.add(new Goomba(screen, rect.getX() / MarioBros.PPM, rect.getY() / MarioBros.PPM));
         }
+        // create all turtles
+        turtles = new Array<Turtle>();
+        for (MapObject object : map.getLayers().get(7).getObjects().getByType(RectangleMapObject.class)) {
+            Rectangle rect = ((RectangleMapObject)object).getRectangle();
+            turtles.add(new Turtle(screen, rect.getX() / MarioBros.PPM, rect.getY() / MarioBros.PPM));
+        }
     }
 
     public Array<Goomba> getGoombas() {
         return goombas;
+    }
+
+    public Array<Enemy> getEnemies() {
+        Array<Enemy> enemies = new Array<Enemy>();
+        enemies.addAll(goombas);
+        enemies.addAll(turtles);
+        return enemies;
     }
 }
