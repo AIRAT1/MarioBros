@@ -63,7 +63,7 @@ public class PlayScreen implements Screen {
         hud = new Hud(game.batch);
         // load our map and setup our map renderer
         mapLoader = new TmxMapLoader();
-        map = mapLoader.load("level1.tmx");
+        map = mapLoader.load("tiled/level1.tmx");
         renderer = new OrthogonalTiledMapRenderer(map, 1 / MarioBros.PPM);
         // initially set our gameCam to be centered correctly at the start of the map
         gameCam.position.set(gamePort.getWorldWidth() / 2, gamePort.getWorldHeight() / 2, 0);
