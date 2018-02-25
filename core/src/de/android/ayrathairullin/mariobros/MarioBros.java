@@ -9,6 +9,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import de.android.ayrathairullin.mariobros.screens.PlayScreen;
 
 public class MarioBros extends Game {
+	public static int curerntLevel = 1;
 	public static final int V_WIDTH = 400;
 	public static final int V_HEIGHT = 208;
 	public static final float PPM = 100;
@@ -42,7 +43,7 @@ public class MarioBros extends Game {
 		manager.load("audio/sounds/stomp.wav", Sound.class);
 		manager.load("audio/sounds/mariodie.wav", Sound.class);
 		manager.finishLoading();
-		setScreen(new PlayScreen(this));
+		setScreen(new PlayScreen(this, 1));
 	}
 
 	@Override

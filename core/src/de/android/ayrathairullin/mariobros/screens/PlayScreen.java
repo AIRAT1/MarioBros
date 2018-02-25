@@ -52,7 +52,8 @@ public class PlayScreen implements Screen {
     private Array<Item> items;
     private LinkedBlockingDeque<ItemDef> itemsToSpawn;
 
-    public PlayScreen(MarioBros game) {
+    public PlayScreen(MarioBros game, int level) {
+        MarioBros.curerntLevel = level;
         atlas = new TextureAtlas("mario_and_enemies.pack");
         this.game = game;
         // create cam used to follow mario trough cam world
@@ -63,7 +64,7 @@ public class PlayScreen implements Screen {
         hud = new Hud(game.batch);
         // load our map and setup our map renderer
         mapLoader = new TmxMapLoader();
-        map = mapLoader.load("tiled/level1.tmx");
+        map = mapLoader.load("tiled/level" + level + ".tmx");
         renderer = new OrthogonalTiledMapRenderer(map, 1 / MarioBros.PPM);
         // initially set our gameCam to be centered correctly at the start of the map
         gameCam.position.set(gamePort.getWorldWidth() / 2, gamePort.getWorldHeight() / 2, 0);
