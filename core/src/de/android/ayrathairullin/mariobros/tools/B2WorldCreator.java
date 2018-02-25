@@ -22,7 +22,7 @@ import de.android.ayrathairullin.mariobros.sprites.enemies.Goomba;
 
 public class B2WorldCreator {
     private Array<Goomba> goombas;
-    private Array<Turtle> turtles;
+    private static Array<Turtle> turtles;
 
     public B2WorldCreator(PlayScreen screen) {
         World world = screen.getWorld();
@@ -77,6 +77,10 @@ public class B2WorldCreator {
 
     public Array<Goomba> getGoombas() {
         return goombas;
+    }
+
+    public static void removeTurtle(Turtle turtle) {
+        turtles.removeValue(turtle, true);
     }
 
     public Array<Enemy> getEnemies() {
